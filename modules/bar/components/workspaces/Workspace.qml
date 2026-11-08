@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Widgets
 import M3Shapes
 import Caelestia.Components
 import Caelestia.Config
@@ -147,15 +148,16 @@ Item {
     Component {
         id: iconComponent
 
-        MaterialIcon {
-            fill: 1
-            grade: 25
-            text: iconCacher.icon
-            color: root.fgColour
-            verticalAlignment: Qt.AlignVCenter
+        IconImage {
+            implicitSize: Tokens.sizes.bar.innerWidth - Tokens.padding.small
+            asynchronous: true
+            source: Icons.getAppIcon(root.toplevels[0]?.lastIpcObject.class ?? "", "application-x-executable")
+            opacity: root.onOtherMonitor ? 0.4 : 1
 
-            WsIconCacher {
-                id: iconCacher
+            Behavior on opacity {
+                Anim {
+                    type: Anim.DefaultEffects
+                }
             }
         }
     }
@@ -164,11 +166,7 @@ Item {
         id: iconLoaderComponent
 
         Loader {
-            sourceComponent: loaderIconCacher.icon ? iconComponent : textComponent
-
-            WsIconCacher {
-                id: loaderIconCacher
-            }
+            sourceComponent: root.isOccupied ? iconComponent : textComponent
         }
     }
 
