@@ -70,7 +70,7 @@ StyledRect {
 
         source: root.mask
         sourceColor: Colours.palette.m3onSurface
-        colorizationColor: Colours.palette.m3onPrimary
+        colorizationColor: Colours.palette.m3primaryContainer
 
         x: 0
         y: -parent.start

@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
@@ -149,10 +150,15 @@ Item {
         id: iconComponent
 
         IconImage {
-            implicitSize: Tokens.sizes.bar.innerWidth - Tokens.padding.small
+            implicitSize: (Tokens.sizes.bar.innerWidth - Tokens.padding.small) * 0.8
             asynchronous: true
             source: Icons.getAppIcon(root.toplevels[0]?.lastIpcObject.class ?? "", "application-x-executable")
             opacity: root.onOtherMonitor ? 0.4 : 1
+
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                saturation: -0.7
+            }
 
             Behavior on opacity {
                 Anim {
