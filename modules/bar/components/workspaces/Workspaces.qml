@@ -116,6 +116,8 @@ ClipRect {
             spacing: Tokens.spacing.extraSmall
             removeDuration: Tokens.anim.durations.expressiveDefaultEffects
 
+            z: root.workspaces[root.activeWsIdx]?.isOccupied ? 1 : 0
+
             model: ScriptModel {
                 values: root.wsIds
             }

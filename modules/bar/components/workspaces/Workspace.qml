@@ -152,7 +152,7 @@ Item {
         IconImage {
             implicitSize: (Tokens.sizes.bar.innerWidth - Tokens.padding.small) * 0.8
             asynchronous: true
-            source: Icons.getAppIcon(root.toplevels[0]?.lastIpcObject.class ?? "", "application-x-executable")
+            source: Icons.getAppIcon(root.toplevels[0]?.lastIpcObject.class ?? "")
             opacity: root.onOtherMonitor ? 0.4 : 1
 
             layer.enabled: true

@@ -30,8 +30,8 @@ StyledRect {
         endAnim.stop();
         startAnim.to = newStart;
         endAnim.to = newStart + activeWs.LazyListView.preferredHeight;
-        startAnim.duration = goingUp ? leadingDuration : trailingDuration;
-        endAnim.duration = goingUp ? trailingDuration : leadingDuration;
+        startAnim.duration = goingUp ? leadingDuration : trailingDuration * 2;
+        endAnim.duration = goingUp ? trailingDuration * 2 : leadingDuration;
         startAnim.start();
         endAnim.start();
     }
